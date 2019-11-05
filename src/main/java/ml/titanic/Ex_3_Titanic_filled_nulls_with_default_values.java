@@ -14,7 +14,6 @@ import org.apache.spark.sql.SparkSession;
  * Fill the data with the default values presented in Map object
  */
 public class Ex_3_Titanic_filled_nulls_with_default_values {
-
     public static void main(String[] args) {
         SparkSession spark = TitanicUtils.getSparkSession();
 

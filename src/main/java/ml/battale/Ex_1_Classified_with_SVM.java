@@ -16,7 +16,6 @@ import org.apache.spark.storage.StorageLevel;
  * The possible explanation: both classes are not linear separable.
  */
 public class Ex_1_Classified_with_SVM {
-
     public static void main(String[] args) {
         SparkSession spark = getSparkSession();
 

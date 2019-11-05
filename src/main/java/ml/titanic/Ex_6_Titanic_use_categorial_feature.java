@@ -20,7 +20,6 @@ import org.apache.spark.sql.SparkSession;
  * The first row in imputed dataset is filled with the special values
  */
 public class Ex_6_Titanic_use_categorial_feature {
-
     public static void main(String[] args) {
         SparkSession spark = TitanicUtils.getSparkSession();
 

@@ -5,7 +5,6 @@ import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
 public class IrisSample {
-
     private static SparkSession getSparkSession(){
         //For windows only: don't forget to put winutils.exe to c:/bin folder
         System.setProperty("hadoop.home.dir", "c:\\");

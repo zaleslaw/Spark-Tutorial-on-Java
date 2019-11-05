@@ -16,7 +16,6 @@ import org.apache.spark.sql.SparkSession;
  * But imputer needs in Double values in the whole dataset. Accuracy =  0.327
  */
 public class Ex_5_Titanic_split_test_train_data {
-
     public static void main(String[] args) {
         SparkSession spark = TitanicUtils.getSparkSession();
 

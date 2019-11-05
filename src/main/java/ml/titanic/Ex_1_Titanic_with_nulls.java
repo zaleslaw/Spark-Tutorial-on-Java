@@ -14,7 +14,6 @@ import org.apache.spark.sql.SparkSession;
  * The main problem are nulls in data. Values to assemble (by VectorAssembler) cannot be null.
  */
 public class Ex_1_Titanic_with_nulls {
-
     public static void main(String[] args) {
         SparkSession spark = TitanicUtils.getSparkSession();
 

@@ -15,7 +15,6 @@ import org.apache.spark.sql.SparkSession;
  * But imputer needs in Double values in the whole dataset. Accuracy =  0.288
  */
 public class Ex_4_Titanic_filled_nulls_with_average {
-
     public static void main(String[] args) {
         SparkSession spark = TitanicUtils.getSparkSession();
 

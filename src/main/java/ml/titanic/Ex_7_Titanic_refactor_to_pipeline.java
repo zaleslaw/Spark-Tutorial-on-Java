@@ -20,7 +20,6 @@ import org.apache.spark.sql.SparkSession;
  * A: One from trainer and one from model.
  */
 public class Ex_7_Titanic_refactor_to_pipeline {
-
     public static void main(String[] args) {
         SparkSession spark = TitanicUtils.getSparkSession();
 

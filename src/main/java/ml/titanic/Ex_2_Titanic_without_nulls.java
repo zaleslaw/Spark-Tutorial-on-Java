@@ -12,7 +12,6 @@ import org.apache.spark.sql.SparkSession;
  * Choose strategy to work with null data. Accuracy =  0.288
  */
 public class Ex_2_Titanic_without_nulls {
-
     public static void main(String[] args) {
         SparkSession spark = TitanicUtils.getSparkSession();
 
