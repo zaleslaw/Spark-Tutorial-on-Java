@@ -7,14 +7,15 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.SparkSession;
 
-import static rdd.SparkUtil.DATA_DIRECTORY;
+import static rdd.util.SparkUtil.DATA_DIRECTORY;
+import static rdd.util.SparkUtil.getSparkSession;
 
 /**
  * Creates the RDD and saves to file.
  */
 public class Ex_1_RDD_To_File {
     public static void main(String[] args) {
-        SparkSession spark = getSparkSession();
+        SparkSession spark = getSparkSession("RDD_To_File");
 
         // Makes RDD based on Array
         SparkContext sc = spark.sparkContext();
@@ -25,19 +26,6 @@ public class Ex_1_RDD_To_File {
         // Creates RDD with 3 parts
         JavaRDD<Integer> ints = jsc.parallelize(r, 3);
 
-        ints.saveAsTextFile(DATA_DIRECTORY + "/ints"); // works for windows well
-    }
-
-    private static SparkSession getSparkSession() {
-        //For windows only: don't forget to put winutils.exe to c:/bin folder
-        System.setProperty("hadoop.home.dir", "c:\\");
-
-        SparkSession spark = SparkSession.builder()
-            .master("local[2]")
-            .appName("RDD_Intro")
-            .getOrCreate();
-
-        spark.sparkContext().setLogLevel("ERROR");
-        return spark;
+        ints.saveAsTextFile(DATA_DIRECTORY + "/ints");
     }
 }

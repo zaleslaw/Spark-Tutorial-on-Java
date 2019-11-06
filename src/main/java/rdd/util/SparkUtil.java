@@ -1,4 +1,4 @@
-package rdd;
+package rdd.util;
 
 import org.apache.spark.sql.SparkSession;
 
@@ -16,5 +16,9 @@ public class SparkUtil {
 
         spark.sparkContext().setLogLevel("ERROR");
         return spark;
+    }
+
+    public static void println(String message) {
+        System.out.println(message);
     }
 }

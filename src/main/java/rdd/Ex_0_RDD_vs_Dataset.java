@@ -3,7 +3,7 @@ package rdd;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.SparkSession;
 
-import static rdd.SparkUtil.getSparkSession;
+import static rdd.util.SparkUtil.getSparkSession;
 
 /**
  * Make dataset based on range and extract RDD from it
