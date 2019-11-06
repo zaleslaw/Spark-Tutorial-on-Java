@@ -1,4 +1,4 @@
-package ml.battale;
+package ml.battle;
 
 import org.apache.spark.ml.classification.DecisionTreeClassificationModel;
 import org.apache.spark.ml.classification.DecisionTreeClassifier;
