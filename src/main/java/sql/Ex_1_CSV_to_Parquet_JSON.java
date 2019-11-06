@@ -1,9 +1,8 @@
 package sql;
 
-import org.apache.spark.SparkContext;
-import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.StructField;
@@ -18,21 +17,19 @@ public class Ex_1_CSV_to_Parquet_JSON {
     public static void main(String[] args) {
         SparkSession spark = getSparkSession("CSV_to_Parquet_JSON");
 
-        SparkContext sc = spark.sparkContext();
-        JavaSparkContext jsc = JavaSparkContext.fromSparkContext(sc);
-
         // Step - 1: Extract the schema
         // Read CSV and automatically extract the schema
 
         Dataset<Row> stateNames = spark.read()
             .option("header", "true")
+            .option("encoding", "windows-1251")
             .option("inferSchema", "true") // Id as int, count as int due to one extra pass over the data
-            .csv(DATA_DIRECTORY + "/stateNames");
+            .csv(DATA_DIRECTORY + "/StateNames.csv");
 
         stateNames.show();
         stateNames.printSchema();
 
-        stateNames.write().parquet(DATA_DIRECTORY + "/stateNames");
+        stateNames.write().mode(SaveMode.Overwrite).parquet(DATA_DIRECTORY + "/stateNames");
 
         // Step - 2: In reality it can be too expensive and CPU-burst
         // If dataset is quite big, you can infer schema manually
@@ -48,11 +45,11 @@ public class Ex_1_CSV_to_Parquet_JSON {
         Dataset<Row> nationalNames = spark.read()
             .option("header", "true")
             .schema(nationalNamesSchema)
-            .csv("/home/zaleslaw/data/NationalNames.csv");
+            .csv(DATA_DIRECTORY + "/NationalNames.csv");
 
         nationalNames.show();
         nationalNames.printSchema();
-        nationalNames.write().json("/home/zaleslaw/data/nationalNames");
+        nationalNames.write().mode(SaveMode.Overwrite).json(DATA_DIRECTORY + "/nationalNames");
         // nationalNames.write.orc("/home/zaleslaw/data/nationalNames")
         // this is available only with HiveContext in opposite you will get an exception
         // Exception in thread "main" org.apache.spark.sql.AnalysisException: The ORC data source must be used with Hive support enabled;
@@ -61,7 +58,7 @@ public class Ex_1_CSV_to_Parquet_JSON {
 
         // Step - 3: Simple dataframe operations
 
-        // filter & select & orderBy
+        // Filter & select & orderBy
         nationalNames
             .where("Gender == 'M'")
             .select("Name", "Year", "Count")
