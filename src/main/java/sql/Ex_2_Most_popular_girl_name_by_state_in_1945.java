@@ -14,7 +14,7 @@ import static rdd.util.SparkUtil.getSparkSession;
  */
 public class Ex_2_Most_popular_girl_name_by_state_in_1945 {
     public static void main(String[] args) {
-        SparkSession spark = getSparkSession("CSV_to_Parquet_JSON");
+        SparkSession spark = getSparkSession("Most_popular_girl_name_by_state_in_1945");
 
         // ASSERT: Files should exists
         Dataset<Row> stateNames = spark.read().parquet(DATA_DIRECTORY + "/stateNames");

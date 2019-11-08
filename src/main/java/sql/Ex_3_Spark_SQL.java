@@ -12,7 +12,7 @@ import static rdd.util.SparkUtil.getSparkSession;
  */
 public class Ex_3_Spark_SQL {
     public static void main(String[] args) {
-        SparkSession spark = getSparkSession("CSV_to_Parquet_JSON");
+        SparkSession spark = getSparkSession("Spark_SQL");
 
         // ASSERT: Files should exists
         Dataset<Row> stateNames = spark.read().parquet(DATA_DIRECTORY + "/stateNames");
